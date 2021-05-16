@@ -1,0 +1,35 @@
+{
+  "$schema": "http://json-schema.org/schema",
+  "id": "Grid Schematics",
+  "title": "Grid Options Schema",
+  "type": "object",
+  "description": "Generate Grid components",
+  "properties": {
+    "project": {
+      "type": "string",
+      "description": "Generate grid in specific Angular CLI Workspace project",
+      "minLength": 3,
+      "default": {
+        "$source": "argv",
+        "index": 0
+      },
+      "x-prompt": "In which project do you wish to add this grid?"
+    },
+    "name": {
+      "type": "string",
+      "description": "The name of the entity",
+      "minLength": 3,
+      "default": {
+        "$source": "argv",
+        "index": 1
+      },
+      "x-prompt": "What will be the name of the entity?"
+    },
+    "editable": {
+      "type": "boolean",
+      "description": "Is the grid editable or not",
+      "default": true,
+      "x-prompt": "Is the grid will be editable? (default: Yes)"
+    }
+  }
+}

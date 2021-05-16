@@ -1,0 +1,40 @@
+/* You can add global styles to this file, and also import other style files */
+@import '~bootstrap/dist/css/bootstrap.min.css';
+@import '~bootswatch/dist/minty/bootstrap.min.css';
+@import '~font-awesome/css/font-awesome.min.css';
+@import '~alertifyjs/build/css/alertify.min.css';
+@import '~alertifyjs/build/css/themes/bootstrap.min.css';
+@import '~ngx-bootstrap/datepicker/bs-datepicker.css';
+
+html,
+body
+{
+    height: 100%;
+}
+body
+{
+    font-family: Roboto, 'Helvetica Neue', sans-serif;
+
+    min-height: 100%;
+    margin: 0;
+}
+a
+{
+    cursor: pointer;
+}
+
+select
+{
+    padding: 6px 12px 6px 9px;
+
+    color: #8e8e8e !important;
+}
+
+.default-option
+{
+    display: none;
+}
+
+.loading .mat-progress-spinner circle, .mat-spinner circle {
+  stroke: #F3969A !important;
+}

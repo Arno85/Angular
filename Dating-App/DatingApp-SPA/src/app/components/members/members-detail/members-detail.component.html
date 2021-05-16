@@ -1,0 +1,85 @@
+<div class="mt-5 mx-5">
+
+  <div class="row">
+    <div class="col-sm-12">
+      <h1>{{ user.knownAs || user.username | titlecase }}'s Profile</h1>
+    </div>
+  </div>
+
+  <div class="row">
+
+    <div class="col-sm-4">
+      <div class="card">
+        <img [src]="user.photoUrl"
+             [alt]="user.username"
+             class="card-img-top img-thumbnail">
+
+        <div class="card-body">
+          <div>
+            <strong>Location:</strong>
+            <p>{{ user.city }}, {{ user.country }}</p>
+          </div>
+          <div>
+            <strong>Age:</strong>
+            <p>{{ user.age }}</p>
+          </div>
+          <div>
+            <strong>Last Active:</strong>
+            <p>{{ user.lastActive | timeAgo }}</p>
+          </div>
+          <div>
+            <strong>Member since:</strong>
+            <p>{{ user.created  | date }}</p>
+          </div>
+        </div>
+
+        <div class="card-footer">
+          <div class="btn-group d-flex">
+            <button class="w-100" [ngClass]="user.isLikedByUser ? 'btn btn-secondary' : 'btn btn-primary'" [disabled]="user.isLikedByUser" (click)="sendLike(user.id)">Like</button>
+            <button class="btn btn-primary w-100" (click)="selectTab(3)">Message</button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="col-sm-8">
+      <div class="tab-panel">
+
+        <tabset class="member-tabset" #memberTabs>
+          <tab heading="About {{ user.knownAs || user.username | titlecase }}">
+            <div class="content"
+                 *ngIf="user.introduction || user.lookingFor; else noContent">
+              <h4>Description</h4>
+              <p>{{ user.introduction }}</p>
+              <h4>Looking For</h4>
+              <p>{{ user.lookingFor }}</p>
+            </div>
+          </tab>
+          <tab heading="Interests">
+            <div class="content"
+                 *ngIf="user.interests; else noContent">
+              <h4>Interests</h4>
+              <p>{{ user.interests }}</p>
+            </div>
+          </tab>
+          <tab heading="Photos">
+            <ngx-gallery [options]="galleryOptions"
+                         [images]="galleryImages"
+                         *ngIf="user.photos.length; else noContent"></ngx-gallery>
+          </tab>
+          <tab heading="Messages">
+            <app-members-messages [recipientId]="user.id"></app-members-messages>
+          </tab>
+        </tabset>
+
+        <ng-template #noContent
+                     class="no-content">
+          <h4>Nothing to show here!</h4>
+        </ng-template>
+
+      </div>
+    </div>
+
+  </div>
+</div>

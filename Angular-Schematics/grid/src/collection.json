@@ -1,0 +1,10 @@
+{
+  "$schema": "../node_modules/@angular-devkit/schematics/collection-schema.json",
+  "schematics": {
+    "generate": {
+      "description": "A schematics to generate all necessary file to implement a new grid",
+      "factory": "./grid/index#generate",
+      "schema": "./grid/schema/schema.json"
+    }
+  }
+}
